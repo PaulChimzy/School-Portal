@@ -1,0 +1,64 @@
+{% extends 'standard.html' %}
+
+{% block title %}
+<title>dashboard</title>
+{% endblock %}
+
+{% block dashboard_active %}
+active
+{% endblock %}
+
+{% block content %}
+<div class="dashboardWrapper">
+    <div class="infoSection">
+        <p><strong>Info!  </strong>This contains all the students details</p>
+    </div>
+    <div class="searchBars">
+        <input type="text" name="fullName" id="fullName" placeholder="Search by name only">
+        <select name="AdmissionStatus" id="AdmissionStatus">
+            <option value="">Select-admission-status</option>
+            <option value="Admitted">Admitted</option>
+            <option value="Pending">Pending</option>
+            <option value="Rejected">Rejected</option>
+        </select>
+        <select name="gender" id="searchGender">
+            <option value="">Select-Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <input type="number" name="jambScore" id="jambScore" placeholder="Enter jamb score">
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>S/n</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Jamb score</th>
+                <th>Admission status</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in studentData %}
+            <tr>
+                <td>{{loop.index}}</td>
+                <td><a href="/student/{{data['student_id']}}/profile">{{data['firstname'] + " " + data['lastname']}}</a></td>
+                <td>{{data['gender']}}</td>
+                <td>{{data['jamb_score']}}</td>
+                <td>{{data['student_status']}}</td>
+                <td>{{data['Email']}}</td>
+            </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">
+                        There are currently no students registered to this database. 
+                        Maybe a little publicity will help!!
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

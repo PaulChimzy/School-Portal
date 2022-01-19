@@ -1,0 +1,59 @@
+{% extends 'standard.html' %}
+
+{% block title %}
+<title>profile</title>
+{% endblock %}
+
+{% block profile_active %}
+active
+{% endblock %}
+
+{% block content %}
+<div class="profile">
+    <div class="statusInfo">
+        <div class="profileImage">
+            <div>
+               <img src="{{url_for('static', filename = 'images/profile/' + user_response['firstname'] + '_' + user_response['lastname'] + '.png')}}" alt=""> 
+            </div>
+            
+            <h3>{{user_response['firstname'] + " " + user_response['lastname']}}</h3>
+            <p>{{user_response['student_status']}}</p>
+        </div> 
+    </div>
+    <div class="studentInfo">
+        <div class="personalInfo">
+            
+            <div class="studentDetails">
+                <h2>Personal Information</h2>
+                <p><strong>Email:</strong> {{user_response['Email']}}</p>
+                <p><strong>Gender:</strong> {{user_response['gender']}}</p>
+                <p><strong>Phone Number:</strong> {{user_response['telephone']}}</p>
+                <p><strong>Date of Birth:</strong> {{user_response['DOB']}}</p>
+            </div>
+            <div class="studentDetails">
+                <h2>Academic Information</h2>
+                <p><strong>Department:</strong>  {{user_response['Department']}}</p>
+                <p><strong>Jamb score:</strong> {{user_response['jamb_score']}}</p>
+                <p><strong>Status:</strong> {{user_response['student_status']}}</p>
+            </div>
+            
+        </div>
+        <div class="contactInfo">
+            <h2>Contact Information</h2>
+            <div class="">
+                <div class="studentDetails">
+                    <p><strong>Street Adress:</strong> {{user_response['address']}}</p>
+                    <p><strong>City:</strong> {{user_response['city']}}</p>
+                    <p><strong>State of residence:</strong> {{user_response['state']}}</p>
+                </div>
+                <div class="studentDetails">
+                    <p><strong>State of Origin:</strong> {{user_response['state_of_origin']}}</p>
+                    <p><strong>Local government:</strong> {{user_response['local_government']}}</p>
+                    <p><strong>Next of Kin:</strong> {{user_response['kin_name']}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+{% endblock %}

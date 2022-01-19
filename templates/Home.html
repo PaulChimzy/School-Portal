@@ -1,0 +1,29 @@
+{% extends 'standard.html' %}
+
+{% block title%}
+<title>Home page</title>
+{% endblock %}
+
+{% block home_active %}
+active
+{% endblock %}
+
+{% block content %}
+<div class="homePage">
+    <div class="firstBox"></div>
+    <div class="fourthBox"></div>
+    <div class="thirdBox"><img src="{{url_for('static', filename = 'images/student.jpg')}}" alt=""></div>
+    <div class="textBox">
+        <h3>THE CENTER FOR HOME <span>EDUCATION</span></h3>
+        <p>Get access to high quality materials today. We offer the best education to 
+            your children using world-class approaches and resources. Your children deserve 
+            that great future you imagine, let us help you realize those imaginations while 
+            providing an impecabble learning experience for your children.
+        </p>
+        <button id="register"> <a href="{{url_for('Registration')}}">REGISTER</a> </button>
+    </div>
+    
+    
+</div>
+
+{% endblock %}

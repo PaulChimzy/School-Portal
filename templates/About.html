@@ -1,0 +1,58 @@
+{% extends 'standard.html' %}
+
+{% block title%} 
+<title>About us</title>
+{% endblock %}
+
+{% block about%}
+id="about"
+{% endblock%}
+
+{% block About_active %}
+active
+{% endblock %}
+
+{% block content %}
+<div class="coverAboutUs">
+    <div class="overlay">    
+        <div class="imageWrapper">
+            <img src="{{url_for('static', filename = 'images/About us2.jpg')}}" alt="">
+        </div>
+        <div class="whyUs">
+            <h2>Why Choose Us?</h2>
+            
+            <div>
+                <i class="fa fa-check-circle fa-10x" aria-hidden="true"></i>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Ab quaerat officia a commodi inventore sunt maxime. 
+                    Non deleniti voluptatibus quidem dicta iusto, molestias quo 
+                    aperiam facere officia tenetur aliquam dignissimos.
+                </p>
+            </div>
+            <div>
+                <i class="fa fa-check-circle fa-10x" aria-hidden="true"></i>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Ab quaerat officia a commodi inventore sunt maxime. 
+                    Non deleniti voluptatibus quidem dicta iusto, molestias quo 
+                    aperiam facere officia tenetur aliquam dignissimos.
+                </p>
+            </div>
+            <div>
+                <i class="fa fa-check-circle fa-10x" aria-hidden="true"></i>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Ab quaerat officia a commodi inventore sunt maxime. 
+                    Non deleniti voluptatibus quidem dicta iusto, molestias quo 
+                    aperiam facere officia tenetur aliquam dignissimos.
+                </p>
+            </div>
+            
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

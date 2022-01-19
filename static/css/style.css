@@ -1,0 +1,1148 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 100vw;
+    min-height: 86vh;
+    background-color: rgb(235, 225, 229);
+}
+
+.bodyCover{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    visibility: hidden;
+    background-color: rgb(255, 255, 255);
+    opacity: 0.9;
+    transition: opacity 1s, visibility 1s;
+    z-index: 20000;
+}
+
+/* Modal box Styling */
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+}
+
+.modal.fade .modal-dialog {
+    -webkit-transform: translate(0, -25%);
+    -ms-transform: translate(0, -25%);
+    -o-transform: translate(0, -25%);
+    transform: translate(0, -25%);
+    -webkit-transition: -webkit-transform 0.3s ease-out;
+    -o-transition: -o-transform 0.3s ease-out;
+    transition: -webkit-transform 0.3s ease-out;
+    transition: transform 0.3s ease-out;
+    transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out, -o-transform 0.3s ease-out;
+}
+
+.modal-dialog {
+    position: relative;
+    width: 35%;
+    margin: 10px auto;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #999;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+    outline: 0;
+    margin-top: 20px;
+}
+
+button.close {
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    padding: 0;
+    font-size: 18px;
+}
+
+.modal-body {
+    position: relative;
+    padding: 35px 15px 15px 15px;
+    text-align: center;
+}
+
+.modal-footer {
+    padding: 5px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+
+/* Styling for the Navigation tabs*/
+.navbar1 {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: auto;
+}
+
+.logo {
+    display: flex;
+    margin: 20px 0 20px 80px;
+}
+
+.logo > img {
+    max-width: 70px;
+}
+
+.logo p{
+    align-self: center;
+    margin: 0 10px;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: rgb(101, 29, 50);
+}
+
+.navigationTab {
+    margin: 20px 80px 20px 0px;
+    align-self: center;
+    display: flex;
+}
+
+.navigationLinks {
+    margin: 15px;
+    text-decoration: none;
+    font-size: 20px;
+    align-self: center;
+    font-weight: bold;
+    color: rgb(101, 29, 50);
+    padding: 7px;
+}
+
+.active {
+    border: 2px solid rgb(101, 29, 50);
+    border-radius: 20px;
+    background-color: rgba(233, 180, 196, 0.24) ;
+}
+
+
+/*Styling for button to activate the side navigation pane for small screen devices*/
+.toggle-button { 
+    position: absolute;
+    top: 30px;
+    right: 80px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: all 0.5s ease-in-out;
+}
+
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: rgb(101, 29, 50);
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.toggle-button .bar::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: rgb(101, 29, 50);
+    border-radius: 10px;
+    transition: all 0.5s ease-in-out;
+    transform: translateY(-13px);
+}
+
+.toggle-button .bar::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: rgb(101, 29, 50);
+    border-radius: 10px;
+    transition: all 0.5s ease-in-out;
+    transform: translateY(13px);
+}
+
+.toggle-button.open .bar {
+    transform: translateX(50px);
+    background-color: transparent;
+}
+
+.toggle-button.open .bar::before {
+    transform: rotateZ(405deg) translate(-35px, 35px);
+    /*background-color: transparent;*/
+}
+
+.toggle-button.open .bar::after {
+    transform: rotateZ(-405deg) translate(-35px, -35px);
+    /*background-color: transparent;*/
+}
+
+/* Side navigation pane styling*/
+
+.sideNav {
+    position: fixed;
+    top: 0;
+    right: -260px;
+    width: 250px;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    justify-content: flex-start;
+    box-shadow: 0px -4px 10px 6px rgb(223, 221, 221);
+    transition: right 0.8s cubic-bezier(0.2, 0.165, 0.82, 0.075) 0.3s;
+    z-index: 30000;
+}
+
+.sideNav .nav-list {
+    margin-top: 50px;
+    margin-right: 50px;
+    width: 100%;
+}
+
+.sideNav .s-nav-item {
+    list-style: none;
+    margin: 35px;
+    width: 100%;
+}
+
+.sideNav .s-link {
+    text-decoration: none;
+    position: relative;
+    padding: 5px 0;
+    color:rgb(101, 29, 50);
+}
+
+.s-link::before {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: rgb(101, 29, 50);
+    position: absolute;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.5s ;
+    top: 0px;
+    transform-origin: left;
+}
+
+.s-link::after {
+    content: "";
+    width: 100%;
+    height: 2px;
+    background-color: rgb(101, 29, 50);
+    position: absolute;
+    left: 0;
+    transform: scaleX(0);
+    transition: transform 0.5s ;
+    bottom: 0px;
+    transform-origin: right;
+
+}
+
+.s-link:hover::before,.s-link:hover::after{
+    transform: scaleX(1);
+}
+
+.closeMarker{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+    height: 30px;
+    width: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.closeMarker .line{
+    width: 100%;
+    height: 3px;
+    background-color: rgb(101, 29, 50);
+    transition: all 0.8s;
+}
+
+.closeMarker .line-1{
+    transform: rotateZ(0deg) /*translate(8px, -6px)*/;
+}
+.closeMarker .line-2{
+    opacity: 1;
+}
+.closeMarker .line-3{
+    transform: rotateZ(0deg) /*translate(8px, 6px)*/;
+}
+
+.change {
+    right: 0;
+}
+
+.change .line-1{
+    transform: rotatez(-405deg) translate(-8px, 6px);
+}
+
+.change .line-2{
+    opacity: 0;
+}
+
+.change .line-3{
+    transform: rotatez(405deg) translate(-8px, -6px);
+}
+
+/* main content styling*/
+
+.mainContent {
+    width: 100%;
+    min-height: 96%;
+}
+
+/* Styling for the Home page HTML Markup*/
+.homePage {
+    position: relative;
+    height: 750px;
+    width: 100%;
+    margin: 25px 0;
+}
+
+.firstBox {
+    position: absolute;
+    top:100px;
+    left: 0;
+    width: 20%;
+    height: 40%;
+    background-color:  rgb(101, 29, 50);
+}
+
+.homePage .textBox {
+    position: absolute;
+    top:30px;
+    left: 20%;
+    width: 30%;
+    min-height: 60%;
+    padding: 50px 30px;
+    background-color: white;
+    border: 4px solid  rgb(101, 29, 50);
+}
+
+.homePage .textBox h3{
+    margin: 20px 0;
+    font-size: 50px;
+}
+
+.homePage .textBox span{
+    color: rgb(101, 29, 50);;
+}
+
+.homePage .textBox P{
+    margin: 25px 0;
+    font-size: 23px;
+    font-weight: lighter;
+    
+}
+
+button {
+    padding: 15px 15px;
+    width: 200px;
+    font-size: 25px;
+    font-weight: bolder;
+    cursor: pointer;
+    background-color: rgb(101, 29, 50);
+    border-radius: 5px;
+    border: none;
+    color: wheat;
+    margin: 20px 0px 20px 0;
+    outline: none;
+}
+
+button a {
+    color: wheat;
+    text-decoration: none;
+}
+
+.homePage .thirdBox {
+    position: absolute;
+    top:100px;
+    left: 50%;
+    width: 30%;
+    height: 75%;
+    padding: 0;
+}
+
+.homePage .thirdBox img {
+    height: 100%;
+    width: 100%;
+}
+
+.homePage .fourthBox {
+    position: absolute;
+    bottom: 86px;
+    right: 0;
+    width: 20%;
+    height: 40%;
+    background-color:  rgb(101, 29, 50);
+}
+
+/* Styling for the fixed footer*/
+.footer {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    justify-content: space-around;
+    color: white;
+    padding: 15px 0;
+    font-size: 20px;
+    background-color: rgb(101, 29, 50);
+}
+
+/*Styling for the About us Page*/
+.coverAboutUs{
+    display: flex;
+    width: 100%;
+    min-height: 86vh;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0px 0;
+    background: linear-gradient(to bottom, rgb(235, 225, 229) 50%, rgb(101, 29, 50) 50%);
+}
+
+.overlay {
+    display: flex;
+    width: 60%;
+    padding: 23px;
+    background-color: white;
+    justify-content: space-around;
+}
+
+.overlay .imageWrapper {
+    width: 30%;
+    margin: -60px 10px 25px 0;
+}
+
+.overlay .imageWrapper img {
+    width: 100%;
+}
+
+.overlay .whyUs {
+    width: 60%;
+}
+
+.whyUs h2 {
+    font-size: 50px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 60px 0 0 0;
+    color: rgb(158, 158, 158);
+}
+
+.whyUs div {
+    display: flex;
+}
+
+.whyUs p {
+    font-size: 18px;
+    color: rgb(158, 158, 158);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 30px 0;
+}
+
+.fa.fa-check-circle {
+    color: green;
+    font-size: 35px;
+    margin: 25px 10px 0 0;
+}
+
+/*Styling for the registration page containing the form*/
+form{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    padding: 20px 30px;
+    margin: auto;
+    background-color: white;
+    font-family: calibri;
+    margin: 10px auto 70px auto;
+    box-shadow: 2px 2px 6px 5px rgb(216, 216, 216);
+}
+
+.formHeader {
+    margin: 5px 0 10px 0;
+    font-family: Calibri;
+    padding-bottom: 10px;
+    border-bottom: 1px solid grey;
+}
+
+.formHeader h1 {
+    font-size: 40px;
+    font-weight: normal;
+    margin: 7px 0;
+    color: rgb(101, 29, 50) ;
+}
+
+.formHeader p {
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0;
+    color: grey;
+}
+
+form section {
+    display: flex;
+    flex-direction: column;
+}
+
+.formSubHeaders {
+    font-size: 25px;
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin: 20px 0 0 0;
+    color: rgb(101, 29, 50);
+}
+
+label, legend{
+    display: block;
+    font-size: 18px;
+    padding: 2px 0;
+}
+
+.visuallyHidden {
+    display:inline;
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.formRow {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 7px 0;
+}
+
+.formData {
+    width: 49%;
+}
+
+.formDataAddress {
+    width: 99%;
+}
+.formDataAddress input {
+    width: 98.5%;
+    padding: 7px;
+    line-height: 1.3;
+    font-size: 16px;
+    border: 1px solid rgb(204, 204, 204);
+    background-color: rgba(247, 247, 247, 0.76);
+    border-radius: 3px;
+    color: grey;
+    outline: none;
+}
+
+.formData input{
+    width: 95%;
+    padding: 8px;
+    line-height: 1.3;
+    font-size: 16px;
+    border: 1px solid rgb(204, 204, 204);
+    background-color: rgba(247, 247, 247, 0.76);
+    border-radius: 3px;
+    color: grey;
+    outline: none;
+}
+
+.formData input:focus, .formDataAddress input:focus {
+    border-color: rgb(101, 29, 50);
+}
+
+select {
+    width: 99%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid rgb(204, 204, 204);
+    background-color: rgba(247, 247, 247, 0.76);
+    border-radius: 3px;
+    outline: none;
+    color: grey;
+}
+
+select:focus {
+    border-color: rgb(101, 29, 50);
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+#genderSelect label {
+    width: 30%;
+    text-align: center;
+    float: left;
+    padding: 7px;
+    border: 1px solid rgb(204, 204, 204);
+    background-color: rgba(247, 247, 247, 0.76);
+}
+
+input[type="radio"]:checked + label {
+    background-color: rgb(101, 29, 50) !important;
+    color: white;
+    border-color: rgb(101, 29, 50);
+}
+
+label[for=gender-male] {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+label[for=gender-female] {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    margin-left: -1px;
+}
+
+form input[type=submit] {
+    font-size: 20px;
+    padding: 10px 8px;
+    align-self: center;
+    margin: 10px 0px;
+    width: 200px;
+    font-weight: bolder;
+    cursor: pointer;
+    background-color: rgb(101, 29, 50);
+    border-radius: 5px;
+    border: none;
+    color: wheat;
+    outline: none;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+/* styling for the error content for flash messages*/
+.flash_error {
+    color: rgb(206, 15, 15);
+}
+
+/*Styling for the profile page of each registered student*/
+.profile {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1% auto;
+    width: 70%;
+    background-color: rgba(233, 180, 196, 0.24);
+    padding: 25px 5px;
+    border-radius: 20px;
+}
+
+.statusInfo {
+    align-self: center;
+    margin-right: 20px;
+    width: 30%;
+    text-align: center;
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px 0;
+}
+
+.profileImage div {
+    margin: 10px auto;
+    width: 80%;
+}
+
+.profileImage div img {
+    width: 100% ;
+    border-radius: 20px;
+}
+
+.profileImage h3 {
+    margin: 10px 0;
+    font-size: 25px;
+}
+
+.profileImage p {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.studentInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    width: 60%;
+    
+}
+
+.personalInfo {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    width: 100%;
+    margin: 15px 5px;
+}
+
+.studentDetails {
+    background-color: white;
+    border-radius: 4px;
+    padding: 0px 30px 30px 30px;
+    width: 41%;
+}
+
+.studentDetails h2{
+    margin: 0 0 20px 0px;
+    padding: 20px;
+    background-color: rgb(101, 29, 50) ;
+    color: white;
+    text-align: center;
+    font-size: 25px;
+}
+
+.studentDetails p{
+    margin: 10px 0;
+    font-size: 23px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.26);
+    padding: 5px 0;
+    line-height: 1.5;
+}
+
+.contactInfo {
+    background-color: white;
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 7px;
+    margin-bottom: 20px ;
+}
+
+.contactInfo h2 {
+    padding: 20px;
+    background-color: rgb(101, 29, 50) ;
+    color: white;
+    width: 90%;
+    margin: auto;
+    font-size: 25px;
+}
+
+.contactInfo > div {
+    display: flex;
+}
+
+.contactInfo div.studentDetails {
+    padding-top: 15px;
+    width: 50%;
+    font-size: 23px;
+}
+
+/*Styling for dashboard page (Table containing all the students record)*/
+.dashboardWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+}
+
+.infoSection {
+    margin: 15px 0;
+    font-size: 20px;
+    padding: 15px 15px;
+    background-color: rgb(233, 180, 196);
+    border-radius: 10px;
+}
+
+.searchBars {
+    padding: 15px 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchBars input, .searchBars select {
+    width: 20%;
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+table{
+    margin: 15px 0;
+    padding: 15px 15px;
+    border-collapse: collapse;
+    border: 1px solid grey;
+    border-top: 4px solid rgb(101, 29, 50);
+    border-bottom: 4px solid rgb(101, 29, 50);
+    width: 100% !important;
+    
+}
+
+th{
+
+    padding: 10px 0;
+    border-bottom: 2px solid rgb(101, 29, 50);
+    border-right: 1px solid rgb(179, 179, 179);
+    font-size: 19px;
+    background-color:rgb(233, 180, 196);
+    text-align: center;
+}
+
+td{
+    padding: 10px 0;
+    text-align: center;
+    border-right: 1px solid rgb(179, 179, 179);
+    border-bottom: 1px solid rgb(179, 179, 179);
+    font-size: 17px;
+}
+
+td a {
+    text-decoration: none;
+    font-size: 17px;
+    color: black;
+}
+
+table tr:nth-child(even) {
+    background-color:rgba(233, 180, 196, 0.164);
+}
+
+
+/*Styling for different screen sizes */
+
+@media (max-width: 1400px) {
+
+    .homePage .textBox {
+        padding: 30px 30px;
+    }
+
+    .homePage .textBox h3 {
+        margin: 10px 0
+    }
+
+    .homePage .textBox P{
+        margin: 20px 0;
+    }
+
+    .overlay {
+        width: 80%;
+    }
+    
+    .overlay .imageWrapper {
+        width: 30%;
+        margin: -60px 10px 25px 0;
+    }
+
+    form {
+        width: 60%;
+    }
+
+    .profile {
+        width: 90%;
+    }
+}
+
+@media (max-width: 1150px) {
+    .homePage .textBox {
+        padding: 30px 30px;
+    }
+    
+    .homePage .textBox h3{
+        margin: 10px 0;
+        font-size: 30px;
+    }
+    
+    .homePage .textBox span{
+        color: rgb(101, 29, 50);;
+    }
+    
+    .homePage .textBox P{
+        margin: 20px 0;
+        font-size: 20px;  
+    }
+    
+    .homePage button {
+        padding: 10px 10px;
+        width: 200px;
+        font-size: 20px;
+    }
+
+    form {
+        width: 70%;
+    }
+
+    .profile {
+        width: 90%;
+    }
+}
+
+@media (max-width: 990px) {
+
+    .firstBox {
+        width: 15%;
+    }
+    
+    .homePage .textBox {
+        position: absolute;
+        top:30px;
+        left: 15%;
+        width: 60%;
+        min-height: 60%;
+        padding: 50px 30px;
+    }
+    
+    .homePage .textBox h3{
+        margin: 20px 0;
+        font-size: 50px;
+    }
+    
+    .homePage .textBox span{
+        color: rgb(101, 29, 50);;
+    }
+    
+    .homePage .textBox P{
+        margin: 25px 0;
+        font-size: 23px;
+        font-weight: lighter;
+        
+    }
+    
+    .homePage button {
+        padding: 15px 15px;
+        width: 200px;
+        font-size: 25px;
+        margin: 20px 0px 20px 0;
+    }
+    
+    .homePage .fourthBox {
+        position: absolute;
+        top: 100px;
+        width: 70%;
+    }
+    .toggle-button {
+        display: flex;
+    }
+
+    .navigationTab {
+        display: none;
+    }
+
+    .thirdBox {
+        display: none;
+    }
+
+    .overlay {
+        display: flex;
+        width: 70%;
+        flex-direction: column;
+        margin: 20px auto;
+    }
+    
+    .overlay .imageWrapper {
+        width: 50%;
+        margin: auto;
+    }
+    
+    .overlay .whyUs {
+        width: 90%;
+        margin: 20px auto;
+    }
+    
+    .whyUs h2 {
+        margin: 20px 0 0 0;
+    }
+
+    .whyUs p {
+        margin: 15px 0;
+    }
+
+    form {
+        width: 85%;
+    }
+
+    .fa.fa-check-circle {
+        font-size: 30px;
+        margin: 12px 10px 0 0;
+    }
+
+    .profile {
+        width:60%;
+        flex-direction: column;
+        margin-bottom: 80px;
+        padding: 20px 10px;
+    }
+
+    .personalInfo {
+        flex-direction: column;
+    }
+
+    .statusInfo {
+        width: 80%;
+        background-color: transparent;
+        margin: auto;
+        padding: 0;
+    }
+    
+    .profileImage div {
+        margin: 5px auto;
+        width: 90%;
+        
+    }
+    
+    .studentInfo, .personalInfo {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .studentDetails {
+        width: 80%;
+        margin: 15px auto;
+    }
+
+    .contactInfo {
+        width: 80%;
+        padding: 0 30px;
+        margin-top: 15px;
+        margin-bottom: 0;
+    }
+    
+    .contactInfo h2 {
+        width: 90%;
+    }
+    
+    .contactInfo > div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .contactInfo div .studentDetails {
+        width: 100%;
+        padding:0;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .toggle-button {
+        right: 20px;
+    }
+
+    .logo{
+       margin-left: 20px;
+    }
+
+    .homePage .textBox {
+        padding: 30px 30px;
+    }
+
+    .homePage .textBox h3 {
+        font-size: 35px;
+    }
+
+    .homePage .textBox P{
+        margin: 20px 0;
+        font-size: 20px;
+    }
+
+    .homePage button {
+        padding: 10px 10px;
+        width: 150px;
+        font-size: 20px;
+        margin: 20px 0px 20px 0;
+    }
+
+    .overlay {
+        width: 100%;
+        background-color:rgb(235, 225, 229) ;
+    }
+    
+    .overlay .imageWrapper {
+        width: 50%;
+        margin: auto;
+    }
+    
+    .overlay .whyUs {
+        width: 90%;
+        margin: 20px auto;
+    }
+    
+    .whyUs h2 {
+        margin: 20px 0 0 0;
+        font-size: 30px;
+        
+    }
+    
+    .whyUs p {
+        margin: 15px 0;
+        font-size: 18px;
+    }
+
+    .formRow {
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .formData {
+        width: 100%;
+        margin: 10px auto;
+    }
+
+    .formDataAddress {
+        width: 97%;
+        margin: 10px 0px;
+    }
+
+    .dashboardWrapper {
+        width: 98%;
+    }
+
+    table th {
+        font-size: 17px;
+    }
+
+    table tr {
+        font-size: 15px;
+    }
+
+    .profile {
+        width:80%;
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,132 @@
+{% extends 'standard.html' %}
+
+{% block title %}
+<title>Registration</title>
+{% endblock %}
+
+{% block body_width %}
+style = "width : 99vw"
+{% endblock %}
+
+{% block Register_active %}
+active
+{% endblock %}
+
+{% block content %}
+
+<form action="/profile" id = "Registration-form" method="POST" enctype="multipart/form-data">
+    <div class="formHeader">
+        <h1>School Application Form</h1>
+        <p>Please fill in the school application form below if you want to attend our institution. Thank you!</p>
+    </div>
+    <section>
+        <h2 class="formSubHeaders">Personal Information</h2>
+        <div class="formRow">
+            <div class="formData">
+                <label for="firstname" class="visuallyHidden">Firstname</label>
+                <input type="text" name="firstname" id="firstname" placeholder="Firstname" required>  
+            </div>
+            <div class="formData">
+                <label for="middlename" class="visuallyHidden">Middlename</label>
+                <input type="text" name="middlename" id="middlename" placeholder="Middlename" required>
+            </div> 
+        </div>
+        <div class="formRow">
+            <div class="formData">
+                <label for="lastname" class="visuallyHidden">Lastname</label>
+                <input type="text" name="lastname" id="lastname" placeholder="Lastname" required> 
+            </div>
+            <div class="formData">
+                <label for="Email" class="visuallyHidden">Email</label>
+                <input type="email" name="Email" id="Email" placeholder="Email" required>
+            </div>
+        </div>
+        <div class="formRow">
+            <div class="formData">
+                <label for="DOB">Date of Birth</label>
+                <input type="date" name="DOB" id="DOB" placeholder="DOB" required>
+            </div>
+            <div class="formData" id="genderSelect">
+                <legend>Gender</legend>
+                <input type="radio" name="gender" id="gender-male" value="Male" required>
+                <label for="gender-male">Male</label>
+                <input type="radio" name="gender" id="gender-female" value="Female">
+                <label for="gender-female">Female</label>
+            </div>
+        </div>
+        <div class="formRow">
+            <div class="formData">
+                <label for="profile-pics" >Profile image</label>
+                <input type="file" name="profile-pics" id="profile-pics" accept="image/*" required>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2 class="formSubHeaders">Contact Information</h2>
+        <div class="formRow">
+            <div class="formDataAddress">
+                <label for="address" class="visuallyHidden">House address</label>
+                <input type="text" name="address" id="address" placeholder="Street address" required>
+            </div>
+        </div>
+        <div class="formRow">
+            <div class="formData">
+                <label for="city" >
+                    <input type="tel" name="city" id="City" placeholder="City" required>  
+                </label>
+                              
+            </div>
+            <div class="formData">
+                <label for="state">
+                    <select name="state" id="state" required>
+                        <option value="" selected>Select-state</option>
+                    </select>  
+                </label>
+                                
+            </div>
+        </div>
+        <div class="formRow">
+            <div class="formData">
+                <label for="telephone" class="visuallyHidden">Phone number</label>
+                <input type="tel" name="telephone" id="telephone" placeholder="Phone" required>                
+            </div>
+            <div class="formData">
+                <label for="kinname" class="visuallyHidden">Name of next of kin</label>
+                <input type="text" name="kinname" id="kinname" placeholder="Next of Kin" required>                
+            </div>
+
+        </div>
+        <div class="formRow">
+            <div class="formData">
+                <label for="state_of_origin">State of Origin</label>
+                <select name="state_of_origin" id="state_of_origin" required>
+                    <option value="" selected>Select-state</option>
+                </select>             
+            </div>
+            <div class="formData">
+                <label for="local_government">Local government</label>
+                <select name="local_government" id="local_government" required>
+                    <option value="" selected>Select-local-government</option>
+                </select>             
+            </div>
+
+        </div>
+    </section>
+    <section>
+        <h2 class="formSubHeaders" >Academic Information</h2>
+        <div class="formRow">
+            <div class="formData">
+                <label for="Department" class="visuallyHidden">Department</label>
+                <input type="text" name="Department" id="Department" placeholder="Department" required>
+            </div>
+            <div class="formData">
+                <label for="jamb_score" class="visuallyHidden">Jamb score</label>
+                <input type="number" name="jamb_score" id="jamb_score" placeholder="Jamb score" required>
+            </div>
+        </div>
+    </section>
+    <input type="submit" value="Submit">
+    
+</form>
+
+{% endblock %}
